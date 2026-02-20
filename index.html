@@ -1,775 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AKSHAYCLICKS — Photography & Film Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    :root {
-      --black: #080808;
-      --dark: #111111;
-      --card: #161616;
-      --border: rgba(255,255,255,0.07);
-      --gold: #c8a96e;
-      --gold-light: #e8cc94;
-      --white: #f5f0e8;
-      --muted: rgba(245,240,232,0.45);
-      --font-display: 'Bebas Neue', sans-serif;
-      --font-serif: 'Cormorant Garamond', serif;
-      --font-body: 'DM Sans', sans-serif;
-    }
+<title>AkshayClicks — Cinematic Photography & Film</title>
 
-    html { scroll-behavior: smooth; }
+<meta name="description" content="Akshay Kumar - Cinematic Photographer & Filmmaker. Travel films, creative visuals, and emotional storytelling.">
+<meta name="author" content="Akshay Kumar">
 
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--font-body);
-      font-weight: 300;
-      cursor: none;
-      overflow-x: hidden;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-    /* Custom cursor */
-    #cursor {
-      position: fixed; width: 10px; height: 10px;
-      background: var(--gold); border-radius: 50%;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
-      mix-blend-mode: difference;
-    }
-    #cursor-ring {
-      position: fixed; width: 40px; height: 40px;
-      border: 1px solid rgba(200,169,110,0.5);
-      border-radius: 50%; pointer-events: none; z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: all 0.4s ease;
-    }
-    body:hover #cursor { transform: translate(-50%, -50%) scale(1); }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-    /* Grain overlay */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 9990; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.35;
-    }
+:root{
+--black:#080808;
+--dark:#111;
+--card:#161616;
+--gold:#c8a96e;
+--gold-light:#e8cc94;
+--white:#f5f0e8;
+--muted:rgba(245,240,232,0.5);
+--border:rgba(255,255,255,0.07);
+}
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 28px 60px;
-      background: linear-gradient(to bottom, rgba(8,8,8,0.9), transparent);
-      backdrop-filter: blur(2px);
-    }
-    .nav-logo {
-      font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 4px;
-      color: var(--white); text-decoration: none;
-    }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a {
-      font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--muted);
-      text-decoration: none; transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--gold); }
+html{scroll-behavior:smooth}
+section{scroll-margin-top:100px}
 
-    /* HERO */
-    #hero {
-      position: relative; height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 60px 80px;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1208 50%, #0a0a0a 100%);
-    }
-    .hero-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,169,110,0.08) 0%, transparent 70%);
-    }
-    .hero-line {
-      position: absolute; top: 0; left: 60px; width: 1px; height: 100%;
-      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-      opacity: 0.3;
-    }
+body{
+background:var(--black);
+color:var(--white);
+font-family:'DM Sans',sans-serif;
+overflow-x:hidden;
+}
 
-    .hero-eyebrow {
-      font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 5px;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
-      animation: fadeUp 1s ease 0.3s both;
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(4rem, 11vw, 10rem);
-      line-height: 0.9; letter-spacing: 3px;
-      color: var(--white); animation: fadeUp 1s ease 0.5s both;
-    }
-    .hero-title em {
-      font-family: var(--font-serif); font-style: italic;
-      color: var(--gold); font-size: 0.85em;
-    }
-    .hero-sub {
-      margin-top: 28px; max-width: 420px;
-      font-size: 0.95rem; line-height: 1.7; color: var(--muted);
-      animation: fadeUp 1s ease 0.7s both;
-    }
-    .hero-cta {
-      margin-top: 48px; display: flex; gap: 20px; align-items: center;
-      animation: fadeUp 1s ease 0.9s both;
-    }
-    .btn-primary {
-      display: inline-block; padding: 14px 36px;
-      background: var(--gold); color: var(--black);
-      font-family: var(--font-body); font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 3px; text-transform: uppercase; text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-    .btn-ghost {
-      display: inline-block; padding: 14px 36px;
-      border: 1px solid rgba(200,169,110,0.4); color: var(--gold);
-      font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 3px;
-      text-transform: uppercase; text-decoration: none; transition: all 0.3s;
-    }
-    .btn-ghost:hover { border-color: var(--gold); background: rgba(200,169,110,0.05); }
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:24px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(to bottom,rgba(8,8,8,0.95),transparent);
+z-index:1000;
+}
 
-    .hero-scroll {
-      position: absolute; right: 60px; bottom: 80px;
-      writing-mode: vertical-rl; font-size: 0.65rem; letter-spacing: 4px;
-      text-transform: uppercase; color: var(--muted);
-      display: flex; align-items: center; gap: 16px;
-      animation: fadeUp 1s ease 1.1s both;
-    }
-    .hero-scroll::before {
-      content: ''; width: 1px; height: 60px;
-      background: linear-gradient(to bottom, transparent, var(--gold));
-    }
+.nav-logo{
+font-family:'Bebas Neue',sans-serif;
+font-size:1.6rem;
+letter-spacing:4px;
+text-decoration:none;
+color:var(--white);
+}
+.nav-logo span{color:var(--gold)}
 
-    /* SECTIONS */
-    section { padding: 120px 60px; }
-    .section-label {
-      font-size: 0.65rem; letter-spacing: 6px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 16px;
-    }
-    .section-title {
-      font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.5rem);
-      letter-spacing: 2px; line-height: 1; color: var(--white); margin-bottom: 60px;
-    }
-    .section-title em {
-      font-family: var(--font-serif); font-style: italic; color: var(--gold);
-    }
+.nav-links{
+display:flex;
+gap:40px;
+list-style:none;
+}
+.nav-links a{
+text-decoration:none;
+color:var(--muted);
+font-size:.75rem;
+letter-spacing:3px;
+text-transform:uppercase;
+transition:.3s;
+}
+.nav-links a:hover{color:var(--gold)}
 
-    /* ABOUT */
-    #about { background: var(--dark); }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
-    .about-visual {
-      position: relative; aspect-ratio: 3/4; overflow: hidden;
-    }
-    .about-img-placeholder {
-      width: 100%; height: 100%;
-      background: linear-gradient(135deg, #1a1208, #222);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-serif); font-style: italic;
-      color: var(--muted); font-size: 1.1rem;
-      border: 1px solid var(--border);
-    }
-    .about-img-placeholder input[type="file"] {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      opacity: 0; cursor: pointer;
-    }
-    .about-frame {
-      position: absolute; bottom: -15px; right: -15px;
-      width: calc(100% - 30px); height: calc(100% - 30px);
-      border: 1px solid rgba(200,169,110,0.3); pointer-events: none; z-index: 0;
-    }
-    .about-content { }
-    .about-content p {
-      font-size: 1.05rem; line-height: 1.8; color: var(--muted); margin-bottom: 20px;
-    }
-    .about-content p strong { color: var(--white); font-weight: 400; }
-    .stats { display: flex; gap: 40px; margin-top: 40px; }
-    .stat-num {
-      font-family: var(--font-display); font-size: 3rem; color: var(--gold);
-      line-height: 1;
-    }
-    .stat-label { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.menu-toggle{display:none;font-size:1.5rem;cursor:pointer}
 
-    /* VIDEO SECTION */
-    #videos { background: var(--black); }
-    .video-upload-area {
-      border: 1px dashed rgba(200,169,110,0.3);
-      padding: 48px; text-align: center;
-      background: rgba(200,169,110,0.02);
-      margin-bottom: 48px; cursor: pointer;
-      transition: all 0.3s; position: relative;
-    }
-    .video-upload-area:hover { border-color: var(--gold); background: rgba(200,169,110,0.05); }
-    .video-upload-area input[type="file"] {
-      position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;
-    }
-    .upload-icon { font-size: 2.5rem; margin-bottom: 16px; color: var(--gold); }
-    .upload-text { font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; color: var(--muted); }
-    .upload-sub { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.25); margin-top: 8px; }
+@media(max-width:900px){
+nav{padding:20px}
+.menu-toggle{display:block}
+.nav-links{
+position:absolute;
+top:80px;
+right:20px;
+flex-direction:column;
+background:var(--card);
+padding:24px;
+display:none;
+border:1px solid var(--border);
+}
+.nav-links.active{display:flex}
+}
 
-    .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
-    .video-card {
-      position: relative; background: var(--card);
-      border: 1px solid var(--border); overflow: hidden;
-      transition: transform 0.4s ease, border-color 0.3s;
-    }
-    .video-card:hover { transform: translateY(-6px); border-color: rgba(200,169,110,0.3); }
-    .video-thumb {
-      width: 100%; aspect-ratio: 16/9; background: #1a1a1a;
-      object-fit: cover; display: block;
-    }
-    .video-thumb-placeholder {
-      width: 100%; aspect-ratio: 16/9;
-      background: linear-gradient(135deg, #1a1a1a, #222);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: 2rem;
-    }
-    .play-btn {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 52px; height: 52px;
-      background: rgba(200,169,110,0.85); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s; pointer-events: none;
-    }
-    .play-btn::after { content: ''; width: 0; height: 0; border: 10px solid transparent; border-left: 18px solid #080808; margin-left: 4px; }
-    .video-card:hover .play-btn { background: var(--gold); transform: translate(-50%, -50%) scale(1.1); }
-    .video-meta { padding: 18px 20px; }
-    .video-title { font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 6px; }
-    .video-tag { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
-    .video-player-wrap { position: relative; aspect-ratio: 16/9; background: #000; }
-    .video-player-wrap video { width: 100%; height: 100%; display: block; }
+/* HERO */
 
-    /* PHOTO GALLERY */
-    #photos { background: var(--dark); }
-    .gallery-upload-area {
-      border: 1px dashed rgba(200,169,110,0.3);
-      padding: 36px; text-align: center;
-      background: rgba(200,169,110,0.02);
-      margin-bottom: 48px; cursor: pointer;
-      transition: all 0.3s; position: relative;
-    }
-    .gallery-upload-area:hover { border-color: var(--gold); background: rgba(200,169,110,0.05); }
-    .gallery-upload-area input[type="file"] {
-      position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;
-    }
+#hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:0 60px 80px;
+background:linear-gradient(135deg,#0a0a0a 0%,#1a1208 50%,#0a0a0a 100%);
+}
 
-    .masonry {
-      columns: 3; column-gap: 16px;
-    }
-    .masonry-item {
-      break-inside: avoid; margin-bottom: 16px; overflow: hidden;
-      border: 1px solid var(--border); position: relative;
-      cursor: pointer; transition: border-color 0.3s;
-    }
-    .masonry-item:hover { border-color: rgba(200,169,110,0.4); }
-    .masonry-item img { width: 100%; display: block; transition: transform 0.6s ease; }
-    .masonry-item:hover img { transform: scale(1.03); }
-    .masonry-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,0.7), transparent);
-      opacity: 0; transition: opacity 0.3s;
-      display: flex; align-items: flex-end; padding: 20px;
-    }
-    .masonry-item:hover .masonry-overlay { opacity: 1; }
-    .masonry-overlay-text { font-family: var(--font-serif); font-style: italic; font-size: 0.9rem; color: var(--gold); }
+.hero-title{
+font-family:'Bebas Neue',sans-serif;
+font-size:clamp(4rem,11vw,9rem);
+line-height:.9;
+letter-spacing:3px;
+text-shadow:0 0 40px rgba(200,169,110,.15);
+}
 
-    .gallery-empty {
-      text-align: center; padding: 80px 20px;
-      color: var(--muted); font-family: var(--font-serif); font-style: italic; font-size: 1.2rem;
-    }
+.hero-title em{
+font-family:'Cormorant Garamond',serif;
+font-style:italic;
+color:var(--gold);
+font-size:.85em;
+}
 
-    /* LIGHTBOX */
-    #lightbox {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.95);
-      z-index: 5000; display: none; align-items: center; justify-content: center;
-    }
-    #lightbox.active { display: flex; }
-    #lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
-    #lightbox-close {
-      position: absolute; top: 30px; right: 40px;
-      font-size: 2rem; color: var(--muted); cursor: pointer; font-weight: 300;
-      transition: color 0.2s;
-    }
-    #lightbox-close:hover { color: var(--gold); }
+.hero-sub{
+margin-top:24px;
+max-width:500px;
+color:var(--muted);
+line-height:1.7;
+}
 
-    /* CONTACT */
-    #contact { background: var(--black); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-    .contact-info p { font-size: 1.05rem; line-height: 1.8; color: var(--muted); margin-bottom: 40px; }
-    .contact-detail {
-      display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
-    }
-    .contact-icon { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 0.9rem; }
-    .contact-detail-text { font-size: 0.9rem; color: var(--muted); }
-    .contact-detail-text a { color: var(--gold); text-decoration: none; }
+.hero-cta{
+margin-top:40px;
+display:flex;
+gap:20px;
+}
 
-    .contact-form { display: flex; flex-direction: column; gap: 20px; }
-    .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-group label { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
-    .form-group input, .form-group textarea, .form-group select {
-      background: var(--card); border: 1px solid var(--border);
-      color: var(--white); padding: 14px 18px;
-      font-family: var(--font-body); font-size: 0.9rem;
-      outline: none; transition: border-color 0.3s; resize: none;
-      -webkit-appearance: none;
-    }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: rgba(200,169,110,0.5); }
-    .form-group select option { background: var(--card); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-submit {
-      background: var(--gold); color: var(--black);
-      border: none; padding: 16px 40px;
-      font-family: var(--font-body); font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 3px; text-transform: uppercase; cursor: pointer;
-      transition: all 0.3s; align-self: flex-start;
-    }
-    .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn{
+padding:14px 36px;
+text-transform:uppercase;
+letter-spacing:3px;
+font-size:.75rem;
+text-decoration:none;
+transition:.3s;
+}
 
-    .form-success {
-      display: none; padding: 16px 20px;
-      border: 1px solid rgba(200,169,110,0.3);
-      background: rgba(200,169,110,0.05);
-      color: var(--gold); font-size: 0.85rem; letter-spacing: 1px;
-    }
+.btn-primary{
+background:var(--gold);
+color:var(--black);
+}
+.btn-primary:hover{background:var(--gold-light)}
 
-    /* FOOTER */
-    footer {
-      background: var(--dark); border-top: 1px solid var(--border);
-      padding: 40px 60px; display: flex; justify-content: space-between; align-items: center;
-    }
-    .footer-logo { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 4px; color: var(--white); }
-    .footer-logo span { color: var(--gold); }
-    .footer-copy { font-size: 0.72rem; letter-spacing: 2px; color: var(--muted); }
-    .social-links { display: flex; gap: 20px; }
-    .social-links a {
-      width: 36px; height: 36px; border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); text-decoration: none; font-size: 0.75rem;
-      transition: all 0.3s;
-    }
-    .social-links a:hover { border-color: var(--gold); color: var(--gold); }
+.btn-ghost{
+border:1px solid rgba(200,169,110,.4);
+color:var(--gold);
+}
+.btn-ghost:hover{background:rgba(200,169,110,.05)}
 
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+/* SECTIONS */
 
-    /* YouTube Shorts embed */
-    .shorts-wrap {
-      position: relative; width: 100%; aspect-ratio: 9/16;
-      background: #000; overflow: hidden;
-    }
-    .shorts-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+section{padding:120px 60px}
+.section-title{
+font-family:'Bebas Neue',sans-serif;
+font-size:clamp(2.5rem,5vw,4rem);
+margin-bottom:60px;
+}
+.section-title em{
+font-family:'Cormorant Garamond',serif;
+color:var(--gold);
+}
 
-    /* Video grid for shorts — 3 columns portrait */
-    #video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    @media (max-width: 900px) { #video-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { #video-grid { grid-template-columns: 1fr; } }
+/* VIDEO GRID */
 
-    /* DIVIDER */
-    .gold-divider {
-      width: 60px; height: 1px; background: var(--gold); margin-bottom: 40px;
-    }
+.video-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:24px;
+}
 
-    @media (max-width: 900px) {
-      nav { padding: 20px 24px; }
-      section { padding: 80px 24px; }
-      #hero { padding: 0 24px 60px; }
-      .hero-scroll { display: none; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .masonry { columns: 2; }
-      footer { flex-direction: column; gap: 20px; text-align: center; }
-      .nav-links { display: none; }
-    }
-    @media (max-width: 600px) {
-      .masonry { columns: 1; }
-      .video-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-  </style>
+.shorts-wrap{
+aspect-ratio:9/16;
+background:#000;
+}
+.shorts-wrap iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* GALLERY */
+
+.masonry{
+columns:3;
+column-gap:16px;
+}
+.masonry img{
+width:100%;
+margin-bottom:16px;
+border:1px solid var(--border);
+transition:.4s;
+}
+.masonry img:hover{
+transform:scale(1.03);
+border-color:rgba(200,169,110,.4);
+}
+
+@media(max-width:900px){
+section{padding:80px 24px}
+.masonry{columns:2}
+}
+
+@media(max-width:600px){
+.masonry{columns:1}
+}
+
+/* CONTACT */
+
+.contact{
+max-width:600px;
+}
+.contact p{color:var(--muted);margin-bottom:20px}
+
+footer{
+padding:40px 60px;
+border-top:1px solid var(--border);
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:var(--dark);
+}
+@media(max-width:600px){
+footer{flex-direction:column;gap:16px;text-align:center}
+}
+</style>
 </head>
+
 <body>
 
-<!-- Custom cursor -->
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
-
-<!-- LIGHTBOX -->
-<div id="lightbox">
-  <span id="lightbox-close">&times;</span>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
-<!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-logo">AKSHAY<span>CLICKS</span></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#videos">Films</a></li>
-    <li><a href="#photos">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<a href="#hero" class="nav-logo">AKSHAY<span>CLICKS</span></a>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<ul class="nav-links">
+<li><a href="#videos">Films</a></li>
+<li><a href="#photos">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-line"></div>
-  <p class="hero-eyebrow">Akshay Kumar — Photography &amp; Film</p>
-  <h1 class="hero-title">AKSHAY<br><em>Clicks</em><br>MOMENTS</h1>
-  <p class="hero-sub">Welcome to my creative world — a visual portfolio of cinematic photography and video, capturing emotion, light, and the moments that last forever.</p>
-  <div class="hero-cta">
-    <a href="#photos" class="btn-primary">View Gallery</a>
-    <a href="#contact" class="btn-ghost">Hire Me</a>
-  </div>
-  <div class="hero-scroll">Scroll</div>
+<h1 class="hero-title">AKSHAY<br><em>Clicks</em><br>MOMENTS</h1>
+<p class="hero-sub">Cinematic photography & emotional storytelling through film. Capturing light, travel and timeless moments.</p>
+<div class="hero-cta">
+<a href="#photos" class="btn btn-primary">View Gallery</a>
+<a href="#contact" class="btn btn-ghost">Hire Me</a>
+</div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid reveal">
-    <div class="about-visual">
-      <div class="about-img-placeholder">
-        <span id="about-img-text">Click to upload your photo</span>
-        <img id="about-img-display" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;" alt="About">
-        <input type="file" id="about-img-input" accept="image/*" title="Upload your photo">
-      </div>
-      <div class="about-frame"></div>
-    </div>
-    <div class="about-content">
-      <p class="section-label">About Me</p>
-      <h2 class="section-title">Hi, I'm<br><em>Akshay Kumar</em></h2>
-      <div class="gold-divider"></div>
-      <p>I'm <strong>Akshay Kumar</strong>, a passionate visual storyteller based in India. I love capturing life through my lens — whether it's a fleeting emotion, a golden hour landscape, or a cinematic short film.</p>
-      <p>Every click, every frame is crafted with intention. My goal is simple — to create images and videos that <strong>make you feel something real</strong>.</p>
-      <div class="stats">
-        <div>
-          <div class="stat-num" id="stat-videos">12+</div>
-          <div class="stat-label">Videos</div>
-        </div>
-        <div>
-          <div class="stat-num" id="stat-photos">50+</div>
-          <div class="stat-label">Photos</div>
-        </div>
-        <div>
-          <div class="stat-num">∞</div>
-          <div class="stat-label">Passion</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VIDEOS -->
 <section id="videos">
-  <p class="section-label reveal">Cinematic Work</p>
-  <h2 class="section-title reveal">My <em>Films</em></h2>
+<h2 class="section-title">My <em>Films</em></h2>
+<div class="video-grid">
 
-  <div style="border:1px solid var(--border);padding:20px 28px;margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;" class="reveal">
-    <div>
-      <div style="font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Want to add more videos?</div>
-      <div style="font-size:0.85rem;color:var(--muted);">Just share your YouTube link with me and I'll add it here instantly.</div>
-    </div>
-    <a href="https://www.youtube.com/@akshayclicks" target="_blank" style="display:inline-block;padding:10px 24px;border:1px solid rgba(200,169,110,0.4);color:var(--gold);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background='rgba(200,169,110,0.08)'" onmouseout="this.style.background='transparent'">Visit YouTube Channel ↗</a>
-  </div>
-
-  <div class="video-grid" id="video-grid">
-
-    <!-- Video 1: Prague -->
-    <div class="video-card">
-      <div class="shorts-wrap">
-        <iframe src="https://www.youtube.com/embed/MOkWUo_Cuzc" title="Prague" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="video-title">Prague</div>
-        <div class="video-tag">Cinematic Short · Travel</div>
-      </div>
-    </div>
-
-    <!-- Video 2: Olympiapark -->
-    <div class="video-card">
-      <div class="shorts-wrap">
-        <iframe src="https://www.youtube.com/embed/yIVIGQhLuLI" title="Olympiapark" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="video-title">Olympiapark</div>
-        <div class="video-tag">Cinematic Short · Travel</div>
-      </div>
-    </div>
-
-    <!-- Video 3: Walchensee -->
-    <div class="video-card">
-      <div class="shorts-wrap">
-        <iframe src="https://www.youtube.com/embed/o6ZEsAy6QDk" title="Walchensee" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="video-title">Walchensee</div>
-        <div class="video-tag">Cinematic Short · Nature</div>
-      </div>
-    </div>
-
-  </div>
-
-
-</section>
-
-<!-- GALLERY -->
-<section id="photos">
-  <p class="section-label reveal">Visual Stories</p>
-  <h2 class="section-title reveal">Photo <em>Gallery</em></h2>
-
-  <div style="border:1px solid rgba(200,169,110,0.25);background:rgba(200,169,110,0.04);padding:24px 28px;margin-bottom:40px;display:flex;gap:20px;align-items:flex-start;" class="reveal">
-    <div style="font-size:1.5rem;color:var(--gold);margin-top:2px;">📸</div>
-    <div>
-      <div style="font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">How to add your photos permanently</div>
-      <div style="font-size:0.85rem;color:var(--muted);line-height:1.7;">
-        1. Create a folder called <span style="color:var(--white);font-family:monospace;background:rgba(255,255,255,0.07);padding:2px 6px;">photos/</span> inside your GitHub repo<br>
-        2. Upload your JPG/PNG photos into that folder<br>
-        3. In the code below each photo, use the path <span style="color:var(--white);font-family:monospace;background:rgba(255,255,255,0.07);padding:2px 6px;">photos/yourphoto.jpg</span><br>
-        4. Or simply send me your photos and I'll embed them for you! 🚀
-      </div>
-    </div>
-  </div>
-
-  <div id="masonry-grid" class="masonry">
-    <!-- Add your photos here! Example: <div class="masonry-item"><img src="photos/photo1.jpg" alt="My Photo"></div> -->
-    <div style="grid-column:1/-1;text-align:center;padding:80px 20px;border:1px dashed rgba(200,169,110,0.2);">
-      <div style="font-size:2rem;margin-bottom:16px;">🖼️</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--muted);margin-bottom:8px;">Your photos will shine here</div>
-      <div style="font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,0.2);">Follow the guide above to add them</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <p class="section-label reveal">Let's Work Together</p>
-  <h2 class="section-title reveal">Get In <em>Touch</em></h2>
-  <div class="contact-grid reveal">
-    <div class="contact-info">
-      <div class="gold-divider"></div>
-      <p>Available for photography sessions, video projects, brand campaigns, events, and collaborations. Let's create something remarkable together.</p>
-      <div class="contact-detail">
-        <div class="contact-icon">✉</div>
-        <div class="contact-detail-text">
-          <a href="/cdn-cgi/l/email-protection#d5bdb0b9b9ba95acbaa0a7b0b8b4bcb9fbb6bab8" id="contact-email"><span class="__cf_email__" data-cfemail="fb939e979794bb82948e899e969a9297d5989496">[email&#160;protected]</span></a>
-        </div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-icon">☎</div>
-        <div class="contact-detail-text" id="contact-phone">+1 (000) 000-0000</div>
-      </div>
-      <div class="contact-detail">
-        <div class="contact-icon">⊕</div>
-        <div class="contact-detail-text">
-          <a href="#" id="contact-insta">@akshayclicks</a> &nbsp;|&nbsp;
-          <a href="#" id="contact-yt">YouTube Channel</a>
-        </div>
-      </div>
-      <div style="margin-top:32px;">
-        <button onclick="openSettings()" style="background:transparent;border:1px solid var(--border);color:var(--muted);padding:10px 22px;font-family:var(--font-body);font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">⚙ Edit Contact Info</button>
-      </div>
-    </div>
-    <div>
-      <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" placeholder="Your name" required>
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="your@email.com" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Project Type</label>
-          <select>
-            <option>Photography Session</option>
-            <option>Video / Film Project</option>
-            <option>Brand Campaign</option>
-            <option>Event Coverage</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea rows="5" placeholder="Tell me about your project…" required></textarea>
-        </div>
-        <button type="submit" class="form-submit">Send Message</button>
-        <div class="form-success" id="form-success">✓ Message sent! I'll be in touch soon.</div>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">AKSHAY<span>CLICKS</span></div>
-  <div class="footer-copy">© 2025 AkshayClicks — Akshay Kumar. All Rights Reserved</div>
-  <div class="social-links">
-    <a href="#" id="footer-insta" title="Instagram">IG</a>
-    <a href="#" id="footer-yt" title="YouTube">YT</a>
-  </div>
-</footer>
-
-<!-- SETTINGS MODAL -->
-<div id="settings-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:7000;align-items:center;justify-content:center;">
-  <div style="background:var(--card);border:1px solid var(--border);padding:48px;max-width:500px;width:90%;position:relative;">
-    <span onclick="closeSettings()" style="position:absolute;top:20px;right:24px;font-size:1.5rem;color:var(--muted);cursor:pointer;">&times;</span>
-    <h3 style="font-family:var(--font-display);letter-spacing:3px;margin-bottom:32px;font-size:1.5rem;">EDIT YOUR INFO</h3>
-    <div style="display:flex;flex-direction:column;gap:16px;">
-      <div class="form-group"><label>Your Name (shown in hero)</label><input type="text" id="s-name" placeholder="Your Name"></div>
-      <div class="form-group"><label>Tagline / Bio</label><input type="text" id="s-tagline" placeholder="Photographer & Filmmaker"></div>
-      <div class="form-group"><label>Email</label><input type="email" id="s-email" placeholder="hello@akshayclicks.com"></div>
-      <div class="form-group"><label>Phone</label><input type="text" id="s-phone" placeholder="+1 (000) 000-0000"></div>
-      <div class="form-group"><label>Instagram Handle</label><input type="text" id="s-insta" placeholder="@yourhandle"></div>
-      <div class="form-group"><label>YouTube Link</label><input type="text" id="s-yt" placeholder="https://youtube.com/@yourchannel"></div>
-      <button onclick="saveSettings()" class="form-submit" style="margin-top:8px;">Save Changes</button>
-    </div>
-  </div>
+<div class="shorts-wrap">
+<iframe loading="lazy" src="https://www.youtube.com/embed/MOkWUo_Cuzc" allowfullscreen></iframe>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// === CURSOR ===
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-  setTimeout(() => {
-    ring.style.left = e.clientX + 'px';
-    ring.style.top = e.clientY + 'px';
-  }, 80);
-});
-document.querySelectorAll('a, button, input, textarea, select, .masonry-item, .video-card, .video-upload-area, .gallery-upload-area').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.width = '18px'; cursor.style.height = '18px';
-    ring.style.width = '60px'; ring.style.height = '60px';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.width = '10px'; cursor.style.height = '10px';
-    ring.style.width = '40px'; ring.style.height = '40px';
-  });
-});
+<div class="shorts-wrap">
+<iframe loading="lazy" src="https://www.youtube.com/embed/yIVIGQhLuLI" allowfullscreen></iframe>
+</div>
 
-// === SCROLL REVEAL ===
-const reveals = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-reveals.forEach(el => obs.observe(el));
+<div class="shorts-wrap">
+<iframe loading="lazy" src="https://www.youtube.com/embed/o6ZEsAy6QDk" allowfullscreen></iframe>
+</div>
 
-// === ABOUT IMAGE ===
-document.getElementById('about-img-input').addEventListener('change', function() {
-  const file = this.files[0];
-  if (!file) return;
-  const url = URL.createObjectURL(file);
-  const img = document.getElementById('about-img-display');
-  img.src = url; img.style.display = 'block';
-  document.getElementById('about-img-text').style.display = 'none';
-});
+</div>
+</section>
 
-// === VIDEO UPLOAD ===
-let uploadedVideos = [];
-document.getElementById('video-input').addEventListener('change', function() {
-  const files = Array.from(this.files);
-  if (!files.length) return;
-  // Remove sample cards on first upload
-  if (uploadedVideos.length === 0) {
-    document.querySelectorAll('.video-card[data-sample]').forEach(c => c.remove());
-  }
-  files.forEach(file => {
-    uploadedVideos.push(file);
-    const url = URL.createObjectURL(file);
-    const card = document.createElement('div');
-    card.className = 'video-card';
-    card.innerHTML = `
-      <div class="video-player-wrap">
-        <video src="${url}" preload="metadata" class="video-thumb"></video>
-      </div>
-      <div class="play-btn"></div>
-      <div class="video-meta">
-        <div class="video-title">${file.name.replace(/\.[^.]+$/, '')}</div>
-        <div class="video-tag">Video</div>
-      </div>`;
-    card.addEventListener('click', () => openVideoModal(url, file.name.replace(/\.[^.]+$/, '')));
-    document.getElementById('video-grid').appendChild(card);
-  });
-});
+<section id="photos">
+<h2 class="section-title">Photo <em>Gallery</em></h2>
+<div class="masonry">
 
-function openVideoModal(src, title) {
-  const modal = document.getElementById('video-modal');
-  document.getElementById('modal-video').src = src;
-  document.getElementById('modal-video-title').textContent = title;
-  modal.style.display = 'flex';
+<!-- Add your images like this -->
+<!-- <img src="photos/photo1.jpg" alt="Prague sunset"> -->
+
+</div>
+</section>
+
+<section id="contact">
+<h2 class="section-title">Get In <em>Touch</em></h2>
+<div class="contact">
+<p>Available for photography sessions, travel films and brand collaborations.</p>
+<p>Email: <a href="mailto:your@email.com" style="color:var(--gold)">your@email.com</a></p>
+<p>Instagram: <a href="https://instagram.com/yourhandle" target="_blank" style="color:var(--gold)">@yourhandle</a></p>
+</div>
+</section>
+
+<footer>
+<div>AKSHAY<span style="color:var(--gold)">CLICKS</span></div>
+<div>© <span id="year"></span> Akshay Kumar</div>
+</footer>
+
+<script>
+function toggleMenu(){
+document.querySelector('.nav-links').classList.toggle('active');
 }
-document.getElementById('video-modal-close').addEventListener('click', () => {
-  const modal = document.getElementById('video-modal');
-  modal.style.display = 'none';
-  document.getElementById('modal-video').pause();
-  document.getElementById('modal-video').src = '';
-});
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
 
-// === GALLERY ===
-let photoCount = 0;
-document.getElementById('gallery-input').addEventListener('change', function() {
-  const files = Array.from(this.files);
-  if (!files.length) return;
-  const empty = document.getElementById('gallery-empty');
-  if (empty) empty.remove();
-  const grid = document.getElementById('masonry-grid');
-  files.forEach((file, i) => {
-    const url = URL.createObjectURL(file);
-    const item = document.createElement('div');
-    item.className = 'masonry-item';
-    item.innerHTML = `<img src="${url}" alt="Photo ${++photoCount}" loading="lazy"><div class="masonry-overlay"><span class="masonry-overlay-text">View Photo</span></div>`;
-    item.addEventListener('click', () => { document.getElementById('lightbox-img').src = url; document.getElementById('lightbox').classList.add('active'); });
-    grid.appendChild(item);
-  });
-});
-
-// Lightbox close
-document.getElementById('lightbox-close').addEventListener('click', () => document.getElementById('lightbox').classList.remove('active'));
-document.getElementById('lightbox').addEventListener('click', e => { if (e.target === document.getElementById('lightbox')) document.getElementById('lightbox').classList.remove('active'); });
-
-// === CONTACT FORM ===
-function handleSubmit(e) {
-  e.preventDefault();
-  document.getElementById('form-success').style.display = 'block';
-  e.target.reset();
-  setTimeout(() => { document.getElementById('form-success').style.display = 'none'; }, 5000);
-}
-
-// === SETTINGS ===
-function openSettings() { document.getElementById('settings-modal').style.display = 'flex'; }
-function closeSettings() { document.getElementById('settings-modal').style.display = 'none'; }
-function saveSettings() {
-  const name = document.getElementById('s-name').value;
-  const email = document.getElementById('s-email').value;
-  const phone = document.getElementById('s-phone').value;
-  const insta = document.getElementById('s-insta').value;
-  const yt = document.getElementById('s-yt').value;
-  if (email) { document.getElementById('contact-email').textContent = email; document.getElementById('contact-email').href = 'mailto:' + email; }
-  if (phone) document.getElementById('contact-phone').textContent = phone;
-  if (insta) { document.getElementById('contact-insta').textContent = insta; document.getElementById('footer-insta').href = 'https://instagram.com/' + insta.replace('@',''); }
-  if (yt) { document.getElementById('contact-yt').href = yt; document.getElementById('footer-yt').href = yt;
+</body>
+</html>
