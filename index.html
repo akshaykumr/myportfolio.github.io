@@ -373,6 +373,18 @@
     .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* YouTube Shorts embed */
+    .shorts-wrap {
+      position: relative; width: 100%; aspect-ratio: 9/16;
+      background: #000; overflow: hidden;
+    }
+    .shorts-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+    /* Video grid for shorts — 3 columns portrait */
+    #video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 900px) { #video-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { #video-grid { grid-template-columns: 1fr; } }
+
     /* DIVIDER */
     .gold-divider {
       width: 60px; height: 1px; background: var(--gold); margin-bottom: 40px;
@@ -472,49 +484,52 @@
   <p class="section-label reveal">Cinematic Work</p>
   <h2 class="section-title reveal">My <em>Films</em></h2>
 
-  <div class="video-upload-area reveal" id="video-upload-area">
-    <input type="file" id="video-input" accept="video/*" multiple>
-    <div class="upload-icon">▶</div>
-    <div class="upload-text">Drop your videos here or click to upload</div>
-    <div class="upload-sub">Supports MP4, MOV, AVI, MKV</div>
+  <div style="border:1px solid var(--border);padding:20px 28px;margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;" class="reveal">
+    <div>
+      <div style="font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Want to add more videos?</div>
+      <div style="font-size:0.85rem;color:var(--muted);">Just share your YouTube link with me and I'll add it here instantly.</div>
+    </div>
+    <a href="https://www.youtube.com/@akshayclicks" target="_blank" style="display:inline-block;padding:10px 24px;border:1px solid rgba(200,169,110,0.4);color:var(--gold);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;" onmouseover="this.style.background='rgba(200,169,110,0.08)'" onmouseout="this.style.background='transparent'">Visit YouTube Channel ↗</a>
   </div>
 
   <div class="video-grid" id="video-grid">
-    <!-- Sample placeholder cards -->
-    <div class="video-card" data-sample="1">
-      <div class="video-thumb-placeholder">▶</div>
-      <div class="play-btn"></div>
+
+    <!-- Video 1: Prague -->
+    <div class="video-card">
+      <div class="shorts-wrap">
+        <iframe src="https://www.youtube.com/embed/MOkWUo_Cuzc" title="Prague" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
       <div class="video-meta">
-        <div class="video-title">Your First Video</div>
-        <div class="video-tag">Upload a video above</div>
+        <div class="video-title">Prague</div>
+        <div class="video-tag">Cinematic Short · Travel</div>
       </div>
     </div>
-    <div class="video-card" data-sample="2">
-      <div class="video-thumb-placeholder">▶</div>
-      <div class="play-btn"></div>
+
+    <!-- Video 2: Olympiapark -->
+    <div class="video-card">
+      <div class="shorts-wrap">
+        <iframe src="https://www.youtube.com/embed/yIVIGQhLuLI" title="Olympiapark" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
       <div class="video-meta">
-        <div class="video-title">Short Film / Reel</div>
-        <div class="video-tag">Your work goes here</div>
+        <div class="video-title">Olympiapark</div>
+        <div class="video-tag">Cinematic Short · Travel</div>
       </div>
     </div>
-    <div class="video-card" data-sample="3">
-      <div class="video-thumb-placeholder">▶</div>
-      <div class="play-btn"></div>
+
+    <!-- Video 3: Walchensee -->
+    <div class="video-card">
+      <div class="shorts-wrap">
+        <iframe src="https://www.youtube.com/embed/o6ZEsAy6QDk" title="Walchensee" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
       <div class="video-meta">
-        <div class="video-title">Documentary / Vlog</div>
-        <div class="video-tag">Upload to showcase</div>
+        <div class="video-title">Walchensee</div>
+        <div class="video-tag">Cinematic Short · Nature</div>
       </div>
     </div>
+
   </div>
 
-  <!-- Video modal -->
-  <div id="video-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:6000;align-items:center;justify-content:center;">
-    <span id="video-modal-close" style="position:absolute;top:30px;right:40px;font-size:2rem;color:rgba(245,240,232,0.5);cursor:pointer;">&times;</span>
-    <div style="width:90vw;max-width:900px;">
-      <video id="modal-video" controls style="width:100%;max-height:80vh;background:#000;"></video>
-      <div id="modal-video-title" style="padding:16px 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--gold);"></div>
-    </div>
-  </div>
+
 </section>
 
 <!-- GALLERY -->
@@ -522,16 +537,25 @@
   <p class="section-label reveal">Visual Stories</p>
   <h2 class="section-title reveal">Photo <em>Gallery</em></h2>
 
-  <div class="gallery-upload-area reveal" id="gallery-upload-area">
-    <input type="file" id="gallery-input" accept="image/*" multiple>
-    <div class="upload-icon" style="font-size:2rem;color:var(--gold);margin-bottom:12px;">⊕</div>
-    <div class="upload-text">Click or drop photos to add to gallery</div>
-    <div class="upload-sub">JPG, PNG, WEBP — multiple files welcome</div>
+  <div style="border:1px solid rgba(200,169,110,0.25);background:rgba(200,169,110,0.04);padding:24px 28px;margin-bottom:40px;display:flex;gap:20px;align-items:flex-start;" class="reveal">
+    <div style="font-size:1.5rem;color:var(--gold);margin-top:2px;">📸</div>
+    <div>
+      <div style="font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">How to add your photos permanently</div>
+      <div style="font-size:0.85rem;color:var(--muted);line-height:1.7;">
+        1. Create a folder called <span style="color:var(--white);font-family:monospace;background:rgba(255,255,255,0.07);padding:2px 6px;">photos/</span> inside your GitHub repo<br>
+        2. Upload your JPG/PNG photos into that folder<br>
+        3. In the code below each photo, use the path <span style="color:var(--white);font-family:monospace;background:rgba(255,255,255,0.07);padding:2px 6px;">photos/yourphoto.jpg</span><br>
+        4. Or simply send me your photos and I'll embed them for you! 🚀
+      </div>
+    </div>
   </div>
 
   <div id="masonry-grid" class="masonry">
-    <div class="gallery-empty" id="gallery-empty">
-      <em>Your photos will appear here once uploaded…</em>
+    <!-- Add your photos here! Example: <div class="masonry-item"><img src="photos/photo1.jpg" alt="My Photo"></div> -->
+    <div style="grid-column:1/-1;text-align:center;padding:80px 20px;border:1px dashed rgba(200,169,110,0.2);">
+      <div style="font-size:2rem;margin-bottom:16px;">🖼️</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--muted);margin-bottom:8px;">Your photos will shine here</div>
+      <div style="font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,0.2);">Follow the guide above to add them</div>
     </div>
   </div>
 </section>
