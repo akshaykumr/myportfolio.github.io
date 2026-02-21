@@ -5,16 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AkshayClicks — Cinematic Photography & Film</title>
-
-<meta name="description" content="Akshay Kumar - Cinematic Photographer & Filmmaker. Travel films, creative visuals, and emotional storytelling.">
-<meta name="author" content="Akshay Kumar">
+<meta name="description" content="Cinematic photography & travel films by Akshay Kumar. Emotional storytelling through visuals.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
 :root{
 --black:#080808;
 --dark:#111;
@@ -36,6 +33,18 @@ font-family:'DM Sans',sans-serif;
 overflow-x:hidden;
 }
 
+/* Grain overlay */
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+opacity:.3;
+pointer-events:none;
+z-index:1;
+}
+
+/* NAV */
 nav{
 position:fixed;
 top:0;
@@ -97,8 +106,22 @@ height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:flex-end;
-padding:0 60px 80px;
-background:linear-gradient(135deg,#0a0a0a 0%,#1a1208 50%,#0a0a0a 100%);
+padding:0 60px 100px;
+position:relative;
+background:url('hero.jpg') center/cover no-repeat;
+}
+
+#hero::after{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(8,8,8,.9),rgba(8,8,8,.4));
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:700px;
 }
 
 .hero-title{
@@ -106,27 +129,31 @@ font-family:'Bebas Neue',sans-serif;
 font-size:clamp(4rem,11vw,9rem);
 line-height:.9;
 letter-spacing:3px;
-text-shadow:0 0 40px rgba(200,169,110,.15);
+text-shadow:0 0 50px rgba(200,169,110,.2);
+animation:fadeUp 1.2s ease forwards;
+opacity:0;
 }
 
 .hero-title em{
 font-family:'Cormorant Garamond',serif;
 font-style:italic;
 color:var(--gold);
-font-size:.85em;
 }
 
 .hero-sub{
 margin-top:24px;
-max-width:500px;
 color:var(--muted);
 line-height:1.7;
+animation:fadeUp 1.2s ease .4s forwards;
+opacity:0;
 }
 
 .hero-cta{
 margin-top:40px;
 display:flex;
 gap:20px;
+animation:fadeUp 1.2s ease .8s forwards;
+opacity:0;
 }
 
 .btn{
@@ -137,21 +164,17 @@ font-size:.75rem;
 text-decoration:none;
 transition:.3s;
 }
-
-.btn-primary{
-background:var(--gold);
-color:var(--black);
-}
+.btn-primary{background:var(--gold);color:var(--black)}
 .btn-primary:hover{background:var(--gold-light)}
-
-.btn-ghost{
-border:1px solid rgba(200,169,110,.4);
-color:var(--gold);
-}
+.btn-ghost{border:1px solid rgba(200,169,110,.4);color:var(--gold)}
 .btn-ghost:hover{background:rgba(200,169,110,.05)}
 
-/* SECTIONS */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:translateY(0)}
+}
 
+/* SECTIONS */
 section{padding:120px 60px}
 .section-title{
 font-family:'Bebas Neue',sans-serif;
@@ -163,67 +186,71 @@ font-family:'Cormorant Garamond',serif;
 color:var(--gold);
 }
 
-/* VIDEO GRID */
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
+/* VIDEO GRID */
 .video-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:24px;
 }
-
 .shorts-wrap{
 aspect-ratio:9/16;
+overflow:hidden;
 background:#000;
+border:1px solid var(--border);
+transition:.4s;
 }
-.shorts-wrap iframe{
-width:100%;
-height:100%;
-border:none;
-}
+.shorts-wrap:hover{transform:translateY(-6px);border-color:rgba(200,169,110,.4)}
+.shorts-wrap iframe{width:100%;height:100%;border:none}
 
 /* GALLERY */
-
-.masonry{
-columns:3;
-column-gap:16px;
-}
+.masonry{columns:3;column-gap:16px}
 .masonry img{
 width:100%;
 margin-bottom:16px;
 border:1px solid var(--border);
+cursor:pointer;
 transition:.4s;
 }
 .masonry img:hover{
 transform:scale(1.03);
-border-color:rgba(200,169,110,.4);
+border-color:rgba(200,169,110,.4)
 }
 
-@media(max-width:900px){
-section{padding:80px 24px}
-.masonry{columns:2}
+/* LIGHTBOX */
+#lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.95);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:5000;
+}
+#lightbox img{
+max-width:90%;
+max-height:90%;
 }
 
-@media(max-width:600px){
-.masonry{columns:1}
-}
-
-/* CONTACT */
-
-.contact{
-max-width:600px;
-}
-.contact p{color:var(--muted);margin-bottom:20px}
-
+/* FOOTER */
 footer{
 padding:40px 60px;
 border-top:1px solid var(--border);
+background:var(--dark);
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:var(--dark);
+}
+@media(max-width:900px){
+section{padding:80px 24px}
+.masonry{columns:2}
+footer{flex-direction:column;gap:20px;text-align:center}
 }
 @media(max-width:600px){
-footer{flex-direction:column;gap:16px;text-align:center}
+.masonry{columns:1}
 }
 </style>
 </head>
@@ -241,50 +268,36 @@ footer{flex-direction:column;gap:16px;text-align:center}
 </nav>
 
 <section id="hero">
+<div class="hero-content">
 <h1 class="hero-title">AKSHAY<br><em>Clicks</em><br>MOMENTS</h1>
-<p class="hero-sub">Cinematic photography & emotional storytelling through film. Capturing light, travel and timeless moments.</p>
+<p class="hero-sub">Cinematic photography & emotional storytelling through film.</p>
 <div class="hero-cta">
 <a href="#photos" class="btn btn-primary">View Gallery</a>
 <a href="#contact" class="btn btn-ghost">Hire Me</a>
 </div>
+</div>
 </section>
 
 <section id="videos">
-<h2 class="section-title">My <em>Films</em></h2>
-<div class="video-grid">
-
-<div class="shorts-wrap">
-<iframe loading="lazy" src="https://www.youtube.com/embed/MOkWUo_Cuzc" allowfullscreen></iframe>
-</div>
-
-<div class="shorts-wrap">
-<iframe loading="lazy" src="https://www.youtube.com/embed/yIVIGQhLuLI" allowfullscreen></iframe>
-</div>
-
-<div class="shorts-wrap">
-<iframe loading="lazy" src="https://www.youtube.com/embed/o6ZEsAy6QDk" allowfullscreen></iframe>
-</div>
-
+<h2 class="section-title reveal">My <em>Films</em></h2>
+<div class="video-grid reveal">
+<div class="shorts-wrap"><iframe loading="lazy" src="https://www.youtube.com/embed/MOkWUo_Cuzc" allowfullscreen></iframe></div>
+<div class="shorts-wrap"><iframe loading="lazy" src="https://www.youtube.com/embed/yIVIGQhLuLI" allowfullscreen></iframe></div>
+<div class="shorts-wrap"><iframe loading="lazy" src="https://www.youtube.com/embed/o6ZEsAy6QDk" allowfullscreen></iframe></div>
 </div>
 </section>
 
 <section id="photos">
-<h2 class="section-title">Photo <em>Gallery</em></h2>
-<div class="masonry">
-
-<!-- Add your images like this -->
+<h2 class="section-title reveal">Photo <em>Gallery</em></h2>
+<div class="masonry reveal">
+<!-- Add images like: -->
 <!-- <img src="photos/photo1.jpg" alt="Prague sunset"> -->
-
 </div>
 </section>
 
 <section id="contact">
-<h2 class="section-title">Get In <em>Touch</em></h2>
-<div class="contact">
-<p>Available for photography sessions, travel films and brand collaborations.</p>
-<p>Email: <a href="mailto:your@email.com" style="color:var(--gold)">your@email.com</a></p>
-<p>Instagram: <a href="https://instagram.com/yourhandle" target="_blank" style="color:var(--gold)">@yourhandle</a></p>
-</div>
+<h2 class="section-title reveal">Get In <em>Touch</em></h2>
+<p class="reveal">Email: <a href="mailto:your@email.com" style="color:var(--gold)">your@email.com</a></p>
 </section>
 
 <footer>
@@ -292,11 +305,30 @@ footer{flex-direction:column;gap:16px;text-align:center}
 <div>© <span id="year"></span> Akshay Kumar</div>
 </footer>
 
+<div id="lightbox" onclick="this.style.display='none'">
+<img id="lightbox-img">
+</div>
+
 <script>
 function toggleMenu(){
 document.querySelector('.nav-links').classList.toggle('active');
 }
 document.getElementById('year').textContent=new Date().getFullYear();
+
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting)e.target.classList.add('visible');
+});
+},{threshold:.1});
+reveals.forEach(el=>obs.observe(el));
+
+document.querySelectorAll('.masonry img').forEach(img=>{
+img.addEventListener('click',()=>{
+document.getElementById('lightbox-img').src=img.src;
+document.getElementById('lightbox').style.display='flex';
+});
+});
 </script>
 
 </body>
